@@ -28,17 +28,27 @@ php = {
 					
 					if (method && method!= '' && method!= 'undefined') {
 					    switch (true) {
-					        // exception for 'ready'
-					        case (method == 'ready'):
+					        // exception for 'ready', 'map', 'queue'
+					        case (method == 'ready' || method == 'map' || method == 'queue'):
 					           selector = selector[method](window[argument[0]]);
 					           break;
 					        // exception for 'bind' and 'one'
-					        case (method == 'bind' || method == 'one'):
+					        case ((method == 'bind' || method == 'one') && argument.length == 3):
 					           selector = selector[method](argument[0],argument[1],window[argument[2]]);
 					           break;
 					        // exception for 'togle'
-					        case (method == 'togle'):
+					        case ((method == 'togle') && argument.length == 2):
 					           selector = selector[method](window[argument[0]],window[argument[1]]);
+					           break;
+					        // exception for 'filter'
+					        case (method == 'filter' && argument.length == 1):
+					           // try run method
+					           if (window[argument[0]] && window[argument[0]] != '' && window[argument[0]] != 'undefined') {
+					               selector = selector[method](window[argument[0]]);
+					           } else {
+					               // try filter by specified expression
+					               selector = selector[method](argument[0]);
+					           }
 					           break;
 					        // exception for effects with callback
 					        case ((   method == 'show'      || method == 'hide'
@@ -47,6 +57,19 @@ php = {
 					               
 					             ) && argument.length == 2):
 					           selector = selector[method](argument[0],window[argument[1]]);
+					           break;
+					        // exception for events with callback
+					        case ((   method == 'blur'      || method == 'change'
+					               || method == 'click'     || method == 'dblclick'
+					               || method == 'error'     || method == 'focus'
+					               || method == 'keydown'   || method == 'keypress'  || method == 'keyup'
+					               || method == 'load'      || method == 'unload'
+					               || method == 'mousedown' || method == 'mousemove' || method == 'mouseout'
+					               || method == 'mouseover' || method == 'mouseup'
+					               || method == 'resize'    || method == 'scroll'
+					               || method == 'select'    || method == 'submit'
+					             ) && argument.length == 1):
+					           selector = selector[method](window[argument[0]]);
 					           break;
 					        // exception for 'fadeTo' with callback
 					        case (method == 'fadeTo' && argument.length == 3):
