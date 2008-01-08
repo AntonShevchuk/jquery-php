@@ -17,7 +17,6 @@
     		jQuery::jQuery('#test2 div')     -> html(date('H:i:s') . ': new content');
     		jQuery::jQuery('#test2 div.red') -> html(date('H:i:s') . ': new content')
     		                                 -> css('backgroundColor' , '#ff0000');
-    		;
     		break;
     	case 'test3':
     		jQuery::jQuery('#test3 div')     -> bind('click', array('test'=>'answer: ' . date('H:i:s')), 'eventAlert')

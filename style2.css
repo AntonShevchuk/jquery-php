@@ -106,7 +106,7 @@ img.right {
 	height: 96px;
 	margin: 0 ;
 	border-bottom: 10px solid #DDDDDD;
-	background: #EFEFEF;
+	background: #EFEFEF url(images/jquery-php.gif) no-repeat right top;
 }
 
 #header h1 {

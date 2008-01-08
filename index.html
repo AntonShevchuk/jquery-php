@@ -66,19 +66,23 @@ php.errors.myCallBack = function (msg, params){
 <div id="page">
 	<!-- start content -->
 	<div id="content">
-		<div class="post">
+		<div class="post">		
+		    <a name="introduction"></a>
 			<h2 class="title">jQuery - AJAX - PHP:</h2>
 			<p class="meta"><small>Create JSON response for jQuery</small></p>
-			<div class="entry">
 
+			<div class="entry">
+			    <h3>Description</h3>
+			    <p>jQuery-PHP - is PHP library for work with jQuery JavaScript framework. jQuery-PHP have very similar syntax to javascript.</p>
+			    			    
                 <h3>Initialize</h3>
                 PHP: require jQuery library
                 <div class="source php">
 			             <pre class="php"><ol><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #b1b100;">require_once</span> <span style="color: #ff0000;">'libraries/jQuery.php'</span>;</div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #808080; font-style: italic;">// many actions</span></div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #808080; font-style: italic;">// ...</span></div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp;</div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #808080; font-style: italic;">// get JSON response</span></div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">jQuery::<span style="color: #006600;">getResponse</span><span style="color: #66cc66;">&#40;</span><span style="color: #66cc66;">&#41;</span>;</div></li></ol></pre>		        </div>
 
-		        HTML: initialize jQuery and php
+		        HTML: initialize jQuery and jQuery.php
 		        <div class="source">
-			             <pre class="html4strict"><ol><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #009900;"><a href="http://december.com/html/4/element/script.html"><span style="color: #000000; font-weight: bold;">&lt;script</span></a> <span style="color: #000066;">src</span>=<span style="color: #ff0000;">&quot;javascript/jquery.js&quot;</span> <span style="color: #000066;">type</span>=<span style="color: #ff0000;">&quot;text/javascript&quot;</span><span style="color: #000000; font-weight: bold;">&gt;</span></span><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/script&gt;</span></span></div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #009900;"><a href="http://december.com/html/4/element/script.html"><span style="color: #000000; font-weight: bold;">&lt;script</span></a> <span style="color: #000066;">src</span>=<span style="color: #ff0000;">&quot;javascript/php.js&quot;</span> <span style="color: #000066;">type</span>=<span style="color: #ff0000;">&quot;text/javascript&quot;</span><span style="color: #000000; font-weight: bold;">&gt;</span></span><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/script&gt;</span></span></div></li></ol></pre>		        </div>
+			             <pre class="html4strict"><ol><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #009900;"><a href="http://december.com/html/4/element/script.html"><span style="color: #000000; font-weight: bold;">&lt;script</span></a> <span style="color: #000066;">src</span>=<span style="color: #ff0000;">&quot;javascript/jquery.js&quot;</span> <span style="color: #000066;">type</span>=<span style="color: #ff0000;">&quot;text/javascript&quot;</span><span style="color: #000000; font-weight: bold;">&gt;</span></span><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/script&gt;</span></span></div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #009900;"><a href="http://december.com/html/4/element/script.html"><span style="color: #000000; font-weight: bold;">&lt;script</span></a> <span style="color: #000066;">src</span>=<span style="color: #ff0000;">&quot;javascript/jquery.php.js&quot;</span> <span style="color: #000066;">type</span>=<span style="color: #ff0000;">&quot;text/javascript&quot;</span><span style="color: #000000; font-weight: bold;">&gt;</span></span><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/script&gt;</span></span></div></li></ol></pre>		        </div>
 
 		        JavaScript: call AJAX (example)
                 <div class="source js">
@@ -87,18 +91,21 @@ php.errors.myCallBack = function (msg, params){
 			</div>
 		</div>
 		<div class="post">
+		    <a name="requirements"></a>
 			<h2 class="title">Requirements:</h2>
 			<p class="meta"><small>System requirements</small></p>
 			<div class="entry">
                 <ul>
-                    <li>PHP 5.2.0 or higher (with JSON extension)</li>
 
+                    <li>PHP 5.2.0 or higher (with JSON extension)</li>
                     <li>jQuery 1.1.2 or higher</li>
                 </ul>
 			</div>
 		</div>
 		<div class="post">
+		    <a name="download"></a>
 			<h2 class="title">Download:</h2>
+
 			<p class="meta"><small>Google Code</small></p>
 			<div class="entry">
 			    Web Access:
@@ -110,14 +117,34 @@ php.errors.myCallBack = function (msg, params){
                 <div class="source">
                 svn checkout http://jquery-php.googlecode.com/svn/trunk/ jquery-php-read-only
                 </div>
+
 			</div>
 		</div>
 		<div class="post">
+			<h2 class="title">Ads:</h2>
+			<p class="meta"><small>Google Ads</small></p>
+			<div class="entry">
+                <script type="text/javascript"><!--
+                google_ad_client = "pub-3214048546347572";
+                //728x90, создано 04.01.08
+                google_ad_slot = "0794216339";
+                google_ad_width = 728;
+                google_ad_height = 90;
+                //--></script>
+
+                <script type="text/javascript"
+                src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                </script>
+			</div>
+		</div>
+		<div class="post">
+		    <a name="examples"></a>
 			<h2 class="title">Examples:</h2>
 			<p class="meta"><small>Should be work...</small></p>
-			<div class="entry">
-			    <h3>jQuery</h3>
 
+			<div class="entry">
+			    <a name="examples-jquery"></a>
+			    <h3>jQuery</h3>
 			    <div>
 			        Assign html by ID (<a href="#" onclick="javascript:$.php({'act':'test0'});return false;">click to run</a>):
 			        <div class="source php">
@@ -144,6 +171,7 @@ php.errors.myCallBack = function (msg, params){
 			    </div>
 			    <br/>
 			    <div>
+
 			        Assign html and chage CSS by Path (<a href="#" onclick="javascript:$.php({'act':'test2'});return false;">click to run</a>):
 			        <div class="source php">
 			             <pre class="php"><ol><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">jQuery::<span style="color: #006600;">jQuery</span><span style="color: #66cc66;">&#40;</span><span style="color: #ff0000;">'#test2 div'</span><span style="color: #66cc66;">&#41;</span>     -&gt; <span style="color: #006600;">html</span><span style="color: #66cc66;">&#40;</span><span style="color: #ff0000;">'new content'</span><span style="color: #66cc66;">&#41;</span>;</div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">jQuery::<span style="color: #006600;">jQuery</span><span style="color: #66cc66;">&#40;</span><span style="color: #ff0000;">'#test2 div.red'</span><span style="color: #66cc66;">&#41;</span> -&gt; <span style="color: #006600;">html</span><span style="color: #66cc66;">&#40;</span><span style="color: #ff0000;">'new content'</span><span style="color: #66cc66;">&#41;</span></div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">                                 -&gt; <span style="color: #006600;">css</span><span style="color: #66cc66;">&#40;</span><span style="color: #ff0000;">'backgroundColor'</span> , <span style="color: #ff0000;">'#ff0000'</span><span style="color: #66cc66;">&#41;</span>;</div></li></ol></pre>			        </div>
@@ -155,12 +183,12 @@ php.errors.myCallBack = function (msg, params){
                     <div class="example" id="test2">
                         <div>old content</div>
                         <div class="red">old content</div>
-                        <div>old content</div>  
+                        <div>old content</div>
                     </div>
 			    </div>
 			    <br/>
-			    <div>
 
+			    <div>
 			        Bind event by Path(<a href="#" onclick="javascript:$.php({'act':'test3'});return false;">click to run</a>):
 			        <script language="JavaScript" type="text/javascript">
 			            function eventAlert(event) {
@@ -229,23 +257,37 @@ php.errors.myCallBack = function (msg, params){
                     </div>
 			    </div>
 			    <br/>
+			    <a name="examples-actions"></a>
 			    <h3>Additional Actions</h3>			    
 			    <div>
 			        <h4>addMessage():</h4>
+
 			        Return message (<a href="#" onclick="javascript:$.php({'act':'msg'});return false;">click to run</a>):
 			        <div class="source php">
-
 			             <pre class="php"><ol><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">jQuery::<span style="color: #006600;">addMessage</span><span style="color: #66cc66;">&#40;</span><span style="color: #ff0000;">'Message 1...'</span><span style="color: #66cc66;">&#41;</span>;</div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">jQuery::<span style="color: #006600;">addMessage</span><span style="color: #66cc66;">&#40;</span><span style="color: #ff0000;">'Message 2...'</span><span style="color: #66cc66;">&#41;</span>;</div></li></ol></pre>			        </div>
+			        Message handler: you can reset default callback function:
+			        <div class="source javascript">
+
+			             <pre class="php"><ol><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #808080; font-style: italic;">// example registering simple callback function for messages</span></div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">php.messages.defaultCallBack = <span style="color: #000000; font-weight: bold;">function</span> <span style="color: #66cc66;">&#40;</span>msg, params<span style="color: #66cc66;">&#41;</span><span style="color: #66cc66;">&#123;</span></div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">    alert <span style="color: #66cc66;">&#40;</span><span style="color: #ff0000;">&quot;My messages CallBack func: &quot;</span> + msg<span style="color: #66cc66;">&#41;</span>;</div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #66cc66;">&#125;</span></div></li></ol></pre>			        </div>
+			        Or create own callback function:			        
+			        <div class="source javascript">
+
+			             <pre class="php"><ol><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #808080; font-style: italic;">// example registering simple callback function for messages</span></div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">php.messages.myCallBack = <span style="color: #000000; font-weight: bold;">function</span> <span style="color: #66cc66;">&#40;</span>msg, params<span style="color: #66cc66;">&#41;</span><span style="color: #66cc66;">&#123;</span></div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">    alert <span style="color: #66cc66;">&#40;</span><span style="color: #ff0000;">&quot;My messages CallBack func: &quot;</span> + msg<span style="color: #66cc66;">&#41;</span>;</div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #66cc66;">&#125;</span></div></li></ol></pre>			        </div>
+			        and call it from PHP:
+			        <div class="source php">
+
+			             <pre class="php"><ol><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">jQuery::<span style="color: #006600;">addMessage</span><span style="color: #66cc66;">&#40;</span><span style="color: #ff0000;">'Message...'</span>, <span style="color: #ff0000;">'myCallBack'</span><span style="color: #66cc66;">&#41;</span>;</div></li></ol></pre>			        </div>
 			    </div>
 			    <br/>
 			    <div>
-
 			        <h4>addError():</h4>
+
 			        Return error (<a href="#" onclick="javascript:$.php({'act':'err'});return false;">click to run</a>):
 			        <div class="source php">
 			             <pre class="php"><ol><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">jQuery::<span style="color: #006600;">addError</span><span style="color: #66cc66;">&#40;</span><span style="color: #ff0000;">'Error 1...'</span><span style="color: #66cc66;">&#41;</span>;</div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">jQuery::<span style="color: #006600;">addError</span><span style="color: #66cc66;">&#40;</span><span style="color: #ff0000;">'Error 2...'</span><span style="color: #66cc66;">&#41;</span>;</div></li></ol></pre>			        </div>
-
+			        Errors handler equal to messages handler
 			    </div>
+
 			    <br/>
 			    <div>
 			        <h4>evalScript():</h4>
@@ -257,8 +299,6 @@ php.errors.myCallBack = function (msg, params){
 			</div>
 		</div>
 	</div>
-	
-       
 	<!-- end content -->
 </div>
 <!-- end page -->
