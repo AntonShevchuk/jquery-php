@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/2002/REC-xhtml1-20020801/DTD/xhtml1-transitional.dtd">
+<!--
+
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Title      : Balloonr
+Version    : 1.0
+Released   : 20070813
+Description: A two-column design for 1024x768 resolutions suitable for blogs and forum sites.
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>jQuery PHP library - AJAX for Zend Framework</title>
+    <meta name="keywords" content="php, ajax, jquery, javascript, zend framework" />
+    <meta name="description" content="jQuery PHP library - AJAX for Zend Framework" />
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="javascript/jquery.js" type="text/javascript"></script>
+
+    <script src="javascript/jquery.php.js" type="text/javascript"></script>
+</head>
+<body>
+<!-- start header -->
+<div id="header">
+	<h1><a href="http://www.hohli.com">HoHl<span>i</span></a></h1>
+	<h2><a href="http://jquery.hohli.com">jQuery PHP</a> <span>beta</span></h2>
+</div>
+
+<!-- end header -->
+
+<!-- start page -->
+<div id="page">
+	<!-- start content -->
+	<div id="content">
+		<div class="post">		
+		    <a name="introduction"></a>
+			<h2 class="title">jQuery - AJAX - Zend Framework:</h2>
+			<p class="meta"><small>Create JSON response for jQuery</small></p>
+
+			<div class="entry">
+			
+                You can create new controller, or use any exist:
+                <div class="source php">
+			             <pre class="php"><ol><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #000000; font-weight: bold;">&lt;?php</span></div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #b1b100;">require_once</span> <span style="color: #ff0000;">'Zend/Controller/Action.php'</span>;</div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp;</div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #808080; font-style: italic;">/**</span></div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #808080; font-style: italic;">&nbsp;* Ajax Controller</span></div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #808080; font-style: italic;">&nbsp;*/</span></div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #000000; font-weight: bold;">class</span> AjaxController <span style="color: #000000; font-weight: bold;">extends</span> Zend_Controller_Action</div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #66cc66;">&#123;</span></div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">    <span style="color: #808080; font-style: italic;">/**</span></div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #808080; font-style: italic;">&nbsp;    * index Action</span></div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #808080; font-style: italic;">&nbsp;    * @return void</span></div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #808080; font-style: italic;">&nbsp;    */</span></div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> indexAction<span style="color: #66cc66;">&#40;</span><span style="color: #66cc66;">&#41;</span></div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">    <span style="color: #66cc66;">&#123;</span></div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">        <span style="color: #808080; font-style: italic;">// check is AJAX request or not</span></div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">        <span style="color: #b1b100;">if</span> <span style="color: #66cc66;">&#40;</span>!<span style="color: #0000ff;">$this</span>-&gt;<span style="color: #006600;">getRequest</span><span style="color: #66cc66;">&#40;</span><span style="color: #66cc66;">&#41;</span> -&gt; <span style="color: #006600;">isXmlHttpRequest</span><span style="color: #66cc66;">&#40;</span><span style="color: #66cc66;">&#41;</span><span style="color: #66cc66;">&#41;</span> <span style="color: #66cc66;">&#123;</span></div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">             <span style="color: #0000ff;">$this</span>-&gt;<span style="color: #006600;">getResponse</span><span style="color: #66cc66;">&#40;</span><span style="color: #66cc66;">&#41;</span>-&gt; <span style="color: #006600;">setHttpResponseCode</span><span style="color: #66cc66;">&#40;</span><span style="color: #cc66cc;">404</span><span style="color: #66cc66;">&#41;</span></div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">                                 -&gt; <span style="color: #006600;">sendHeaders</span><span style="color: #66cc66;">&#40;</span><span style="color: #66cc66;">&#41;</span>;</div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">            <span style="color: #0000ff;">$this</span>-&gt;<span style="color: #006600;">renderScript</span><span style="color: #66cc66;">&#40;</span><span style="color: #ff0000;">'empty.phtml'</span><span style="color: #66cc66;">&#41;</span>;</div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">            <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">false</span>;</div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">        <span style="color: #66cc66;">&#125;</span></div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">        <span style="color: #808080; font-style: italic;">// requery php library</span></div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">        <span style="color: #b1b100;">require_once</span> <span style="color: #ff0000;">'jQuery.php'</span>;</div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">        <span style="color: #808080; font-style: italic;">// assign to div with id = 'test' current time</span></div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">        jQuery::<span style="color: #006600;">jQuery</span><span style="color: #66cc66;">&#40;</span><span style="color: #ff0000;">'div#test'</span><span style="color: #66cc66;">&#41;</span>-&gt;<span style="color: #006600;">html</span><span style="color: #66cc66;">&#40;</span><a href="http://www.php.net/date"><span style="color: #000066;">date</span></a><span style="color: #66cc66;">&#40;</span><span style="color: #ff0000;">'H:i:s'</span><span style="color: #66cc66;">&#41;</span><span style="color: #66cc66;">&#41;</span>;</div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">    <span style="color: #66cc66;">&#125;</span></div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #66cc66;">&#125;</span></div></li></ol></pre>		        </div>
+
+		        
+		        Template index.phtml - only jQuery response.
+		        <div class="source php">
+			             <pre class="php"><ol><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #000000; font-weight: bold;">&lt;?php</span></div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">    <span style="color: #b1b100;">require_once</span> <span style="color: #ff0000;">'jQuery.php'</span>;</div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">    <span style="color: #808080; font-style: italic;">// only jQuery response, nothing more</span></div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">    jQuery::<span style="color: #006600;">getResponse</span><span style="color: #66cc66;">&#40;</span><span style="color: #66cc66;">&#41;</span>;</div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #000000; font-weight: bold;">?&gt;</span></div></li></ol></pre>		        </div>
+
+		        
+                Include JavaScript in current action of controller (where your use AJAX)
+                <div class="source php">
+			             <pre class="php"><ol><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">    <span style="color: #0000ff;">$this</span>-&gt;<span style="color: #006600;">view</span>-&gt;<span style="color: #006600;">headScript</span><span style="color: #66cc66;">&#40;</span><span style="color: #66cc66;">&#41;</span>-&gt;<span style="color: #006600;">appendFile</span><span style="color: #66cc66;">&#40;</span><span style="color: #ff0000;">'/public/js/jquery.js'</span><span style="color: #66cc66;">&#41;</span>;</div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">    <span style="color: #0000ff;">$this</span>-&gt;<span style="color: #006600;">view</span>-&gt;<span style="color: #006600;">headScript</span><span style="color: #66cc66;">&#40;</span><span style="color: #66cc66;">&#41;</span>-&gt;<span style="color: #006600;">appendFile</span><span style="color: #66cc66;">&#40;</span><span style="color: #ff0000;">'/public/js/jquery.php.js'</span><span style="color: #66cc66;">&#41;</span>;</div></li></ol></pre>		        </div>
+
+                
+
+		        
+		        Call AJAX in your current template
+                <div class="source">
+			             <pre><ol><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">&lt;a href=&quot;#&quot; onclick=&quot;javascript:$.php('&lt;?php echo $this-&gt;Url(array('controller'=&gt;'ajax', 'action'=&gt;'index')',{});?&gt;);return false;&quot;&gt;click me&lt;/a&gt;</div></li></ol></pre>		        </div>
+
+			</div>
+		</div>
+	</div>
+	
+       
+	<!-- end content -->
+</div>
+<!-- end page -->
+
+<div id="footer">
+	<p id="legal">&copy;2007 All Rights Reserved. | Developed by <a href="http://anton.shevchuk.name/">Anton Shevchuk</a>| Designed by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a></p>
+
+	<p id="links">
+    	<!--<a href="about.html">About</a> | 
+    	<a href="privacy.html">Privacy</a> | 
+    	<a href="terms.html">Terms</a> | 
+    	<a href="faq.html">FAQ</a> | -->
+    	<a href="http://validator.w3.org/check/referer" title="This page validates as XHTML 1.0 Transitional"><abbr title="eXtensible HyperText Markup Language">XHTML</abbr></a> | 
+    	<a href="http://jigsaw.w3.org/css-validator/check/referer" title="This page validates as CSS"><abbr title="Cascading Style Sheets">CSS</abbr></a>
+	</p>
+</div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-1669896-8");
+pageTracker._initData();
+pageTracker._trackPageview();
+
+</script>
+</body>
+</html>
