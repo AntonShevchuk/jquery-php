@@ -6,37 +6,37 @@
     // switch statement for $act
     switch ($act) {
     	case 'test0':
-    		jQuery::jQuery('#test0') -> html(date('H:i:s') . ': new content');
+    		jQuery('#test0') -> html(date('H:i:s') . ': new content');
     		break;
     	case 'test1':
-    		jQuery::jQuery('#test1') -> html(date('H:i:s') . ': new content')
+    		jQuery('#test1') -> html(date('H:i:s') . ': new content')
     		                         -> css('backgroundColor' , '#ffff00');
     		;
     		break;
     	case 'test2':
-    		jQuery::jQuery('#test2 div')     -> html(date('H:i:s') . ': new content');
-    		jQuery::jQuery('#test2 div.red') -> html(date('H:i:s') . ': new content')
+    		jQuery('#test2 div')     -> html(date('H:i:s') . ': new content');
+    		jQuery('#test2 div.red') -> html(date('H:i:s') . ': new content')
     		                                 -> css('backgroundColor' , '#ff0000');
     		break;
     	case 'test3':
-    		jQuery::jQuery('#test3 div')     -> bind('click', array('test'=>'answer: ' . date('H:i:s')), 'eventAlert')
+    		jQuery('#test3 div')     -> bind('click', array('test'=>'answer: ' . date('H:i:s')), 'eventAlert')
     		                                 -> css ('cursor', 'pointer')
     		                                 -> css ('color',  '#0000ff')
     		                                 -> css ('textDecoration', 'underline');
     		break;
     	case 'test4':
-    		jQuery::jQuery('#test4 div.hide')-> css ('color',  '#ff0000')
+    		jQuery('#test4 div.hide')-> css ('color',  '#ff0000')
     		                                 -> animate (array('opacity'=>'show'), 1000);
     		break;
     	case 'test4-restore':
-    		jQuery::jQuery('#test4 div.hide')-> css ('color',  '#000000')
+    		jQuery('#test4 div.hide')-> css ('color',  '#000000')
     		                                 -> animate (array('opacity'=>'hide'), 1000);
     		break;
     	case 'test5':
-            jQuery::jQuery('#test5 div.hide')-> slideUp(500, 'eventHide');
+            jQuery('#test5 div.hide')-> slideUp(500, 'eventHide');
     		break;
     	case 'test5-restore':
-            jQuery::jQuery('#test5 div.hide')-> slideDown(500);
+            jQuery('#test5 div.hide')-> slideDown(500);
     		break;
     		
     	case 'msg':

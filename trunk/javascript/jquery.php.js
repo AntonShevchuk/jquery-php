@@ -1,5 +1,15 @@
-/**
- * php actions
+/*
+ * jQuery PHP Plugin
+ * version: 0.5 (07/07/2008)
+ * author:  Anton Shevchuk (http://anton.shevchuk.name)
+ * @requires jQuery v1.2.1 or later
+ *
+ * Examples and documentation at: http://jquery.hohli.com/
+ * Dual licensed under the MIT and GPL licenses:
+ *   http://www.opensource.org/licenses/mit-license.php
+ *   http://www.gnu.org/licenses/gpl.html
+ *
+ * Revision: $Id$
  */
 php = {
     /**
@@ -12,12 +22,13 @@ php = {
      * success
      * parse AJAX response
      * @param object response
+     * @param string textStatus
      */
      success:function (response, textStatus) {
         // call jquery methods
 		for (var i=0;i<response['q'].length; i++) {
 		   
-			var selector  = $(response['q'][i]['s']);
+			var selector  = jQuery(response['q'][i]['s']);
 			var methods   = response['q'][i]['m'];
 			var arguments = response['q'][i]['a'];
 			
@@ -36,8 +47,8 @@ php = {
 					        case ((method == 'bind' || method == 'one') && argument.length == 3):
 					           selector = selector[method](argument[0],argument[1],window[argument[2]]);
 					           break;
-					        // exception for 'togle'
-					        case ((method == 'togle') && argument.length == 2):
+					        // exception for 'toggle' and 'hover'
+					        case ((method == 'toggle' || method == 'hover') && argument.length == 2):
 					           selector = selector[method](window[argument[0]],window[argument[1]]);
 					           break;
 					        // exception for 'filter'
@@ -103,7 +114,7 @@ php = {
 					}
 				} catch (error) {
 					// if is error
-					alert('onAction: $("'+ response['q'][i]['s'] +'").'+ method +'("'+ argument +'")\n'
+					alert('onAction: jQuery("'+ response['q'][i]['s'] +'").'+ method +'("'+ argument +'")\n'
 									+' in file: ' + error.fileName + '\n'
 									+' on line: ' + error.lineNumber +'\n'
 									+' error:   ' + error.message);
@@ -113,9 +124,8 @@ php = {
 
         // predefined actions named as 
         // Methods of ObjResponse in PHP side 
-        $.each(response['a'], function (func, params) {
+        jQuery.each(response['a'], function (func, params) {
             for (var i=0;i<params.length; i++) {
-            
                 try {
                     php[func](params[i]);
                 } catch (error) {
@@ -137,15 +147,15 @@ php = {
      * @param object except
      */
      error:function (xmlEr, typeEr, except) {
-        
         var exObj = except ? except : false;
         // error report for popup window coocking
-        var printStr = '<br />on php  Error <br /> <br />XMLHttpRequest exchange :';
+        var printStr = "<html><head><title>Error</title></head><body>";
+            printStr += 'XMLHttpRequest exchange : ';
         
         // XMLHttpRequest.readyState status
         switch (xmlEr.readyState) {
             case 0:
-                readyStDesc  = "not initialize";
+                readyStDesc = "not initialize";
                 break;
             case 1: 
                 readyStDesc = "open";
@@ -173,10 +183,10 @@ php = {
         printStr += "<br />HTTP status: <br />"+xmlEr.status +" - "+xmlEr.statusText+"<br /><br />";
         // add response text
         printStr += "Response text : <br /> "+ xmlEr.responseText ;
-        
+        printStr += "</body></html>" ;
         
         var mywin = window.open( "",
-                                 "","status=0,width=500,height=600, resizable = yes ,scrollbars = yes ",true);
+                                 "","status=0,width=800,height=600, resizable = yes ,scrollbars = yes ",true);
                                  mywin.document.clear();
                                  mywin.document.write(printStr);
                                  mywin.document.close();
@@ -245,9 +255,9 @@ php = {
 
 // example php extension to jQuery (example)
 jQuery.extend({
-    php: function (url, params) {        
+    php: function (url, params) {
         // do an ajax post request
-        $.ajax({
+        jQuery.ajax({
            // AJAX-specified URL
            url: url,
            // JSON
