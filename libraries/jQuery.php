@@ -183,3 +183,17 @@ class jQuery
         jQuery::$jQuery->response['a'][$name][] = $jQuery_Action;
     }
 }
+
+/**
+ * jQuery
+ *
+ * alias for jQuery::jQuery
+ *
+ * @access  public
+ * @param   string   $selector
+ * @return  jQuery_Element
+ */
+function jQuery($selector) 
+{
+    return jQuery::jQuery($selector);
+}
