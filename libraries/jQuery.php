@@ -146,7 +146,7 @@ class jQuery
      *
      * @return jQuery_Element
      */
-    public static function jQuery($selector)
+    public static function addQuery($selector)
     {
         jQuery::init();
         
@@ -195,5 +195,5 @@ class jQuery
  */
 function jQuery($selector) 
 {
-    return jQuery::jQuery($selector);
+    return jQuery::addQuery($selector);
 }
