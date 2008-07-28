@@ -212,6 +212,23 @@ php.errors.myCallBack = function (msg, params){
                     </div>
 			    </div>
 			    <br/>
+                <a name="examples-events"></a>
+			    <h3>Handle System Events</h3>    
+			    <div>
+			        Create loading image (like under right menu), <a href="#" onclick="javascript:$.php(url,{'act':'timeout'});return false;">click to run</a>:
+			        <div class="source js">
+
+			             <pre class="php"><ol><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #808080; font-style: italic;">// example registering custom beforeSend function</span></div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">php.beforeSend = <span style="color: #000000; font-weight: bold;">function</span> <span style="color: #66cc66;">&#40;</span><span style="color: #66cc66;">&#41;</span><span style="color: #66cc66;">&#123;</span></div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">    $<span style="color: #66cc66;">&#40;</span><span style="color: #ff0000;">'#loading'</span><span style="color: #66cc66;">&#41;</span>.slideDown<span style="color: #66cc66;">&#40;</span><span style="color: #ff0000;">'fast'</span><span style="color: #66cc66;">&#41;</span>;</div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #66cc66;">&#125;</span></div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp;</div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #808080; font-style: italic;">// example registering custom complete function</span></div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">php.complete = <span style="color: #000000; font-weight: bold;">function</span> <span style="color: #66cc66;">&#40;</span><span style="color: #66cc66;">&#41;</span><span style="color: #66cc66;">&#123;</span></div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">    $<span style="color: #66cc66;">&#40;</span><span style="color: #ff0000;">'#loading'</span><span style="color: #66cc66;">&#41;</span>.slideUp<span style="color: #66cc66;">&#40;</span><span style="color: #ff0000;">'slow'</span><span style="color: #66cc66;">&#41;</span>;</div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #66cc66;">&#125;</span></div></li></ol></pre>			        </div>
+
+			    </div>
+			    <br/>
+			    <div>
+			        Change default error reporting:
+			        <div class="source js">
+			             <pre class="php"><ol><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #808080; font-style: italic;">// example registering custom error function</span></div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">php.error = <span style="color: #000000; font-weight: bold;">function</span> <span style="color: #66cc66;">&#40;</span><span style="color: #66cc66;">&#41;</span><span style="color: #66cc66;">&#123;</span></div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">    alert<span style="color: #66cc66;">&#40;</span><span style="color: #ff0000;">&quot;Something wrong&quot;</span><span style="color: #66cc66;">&#41;</span>;</div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #66cc66;">&#125;</span></div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #808080; font-style: italic;">// example registering still error function</span></div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">php.error = <span style="color: #000000; font-weight: bold;">function</span> <span style="color: #66cc66;">&#40;</span><span style="color: #66cc66;">&#41;</span><span style="color: #66cc66;">&#123;</span></div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">    <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">true</span>;</div></li><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #66cc66;">&#125;</span></div></li></ol></pre>			        </div>
+
+			    </div>
+			    <br/>
 			    <a name="examples-actions"></a>
 			    <h3>Additional Actions</h3>    
 			    <div>
@@ -269,19 +286,23 @@ php.errors.myCallBack = function (msg, params){
 
 <!-- preview div -->
 <div id="preview">
-    <h2>Menu</h2>
-    <ol>
-        <li><a href="#introduction">Introduction</a></li>
-        <li><a href="#requirements">Requirements</a></li>
-        <li><a href="#download">Download</a></li>
-        <li><a href="#examples">Examples</a>
+    <div id="preview_content">
+        <h2>Menu</h2>
+        <ol>
+            <li><a href="#introduction">Introduction</a></li>
 
-            <ul>
-                <li><a href="#examples-jquery">jQuery</a></li>
-                <li><a href="#examples-actions">Actions</a></li>
-            </ul>
-        </li>
-    </ol>
+            <li><a href="#requirements">Requirements</a></li>
+            <li><a href="#download">Download</a></li>
+            <li><a href="#examples">Examples</a>
+                <ul>
+                    <li><a href="#examples-jquery">jQuery</a></li>
+                    <li><a href="#examples-events">Events</a></li>
+                    <li><a href="#examples-actions">Actions</a></li>
+                </ul>
+            </li>
+        </ol>
+        <div id="loading" style="display:none;margin-top:4px;"><img src="/images/ajax-loader.gif" alt="Loading"/></div>
+    </div>
 </div>
 <script type="text/javascript">
 	var name = "#preview";
@@ -293,6 +314,19 @@ php.errors.myCallBack = function (msg, params){
 			offset = menuYloc+$(document).scrollTop()+"px";
 			$(name).animate({top:offset},{duration:500,queue:false});
 		});
+		
+		php.beforeSend = function (){
+            $('#loading').slideDown('fast');
+        }
+        
+		php.complete = function (){
+            $('#loading').slideUp('slow');
+        }
+        
+        
+        php.error = function (){
+            return true;
+        }
 	});
 </script>
 </body>

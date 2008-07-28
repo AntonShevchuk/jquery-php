@@ -18,6 +18,12 @@
     
 == History
 
+    0.6 - 2008.07.28
+        + example "ajax loading image" with small image "ajax-loader.gif"
+        + example "error handler"
+        - remove method "jQuery" (cause an E_STRICT error)
+        ! very important, now "jQuery::jQuery('#..')" is not working, use short call "jQuery('#..')"
+
     0.5 - 2008.07.07
         + history :)
         + alias in PHP - now aviable function jQuery (see example)
@@ -39,3 +45,4 @@ legend
  "-" remove some stuff
  "*" fix bug or some changes
  "#" comment
+ "!" very important comment

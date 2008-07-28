@@ -1,4 +1,7 @@
 <?php
+    // check all errors include E_STRICT
+    // error_reporting(E_ALL&E_STRICT);
+    
     require_once 'libraries/jQuery.php';
     
     $act = isset($_POST['act'])?$_POST['act']:null;
@@ -39,6 +42,10 @@
             jQuery('#test5 div.hide')-> slideDown(500);
     		break;
     		
+    	case 'timeout':
+    	    sleep(3);
+    	    jQuery('#preview_content')-> animate (array('opacity'=>'0.5'), 1000)-> animate (array('opacity'=>'1'), 1000);
+    	    break;
     	case 'msg':
     	    jQuery::addMessage('Message 1...');
     	    jQuery::addMessage('Message 2...');
