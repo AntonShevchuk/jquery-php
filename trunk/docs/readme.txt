@@ -17,6 +17,9 @@
     homepage: http://anton.shevchuk.name
     
 == History
+    0.7 - 2008.09.11
+        + example "send form"
+        + plugin jQuery-Form
 
     0.6 - 2008.07.28
         + example "ajax loading image" with small image "ajax-loader.gif"
