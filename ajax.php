@@ -41,7 +41,16 @@
     	case 'test5-restore':
             jQuery('#test5 div.hide')-> slideDown(500);
     		break;
-    		
+    	case 'form':
+    	    $field1 = isset($_REQUEST['field1'])?$_REQUEST['field1']:'';
+    	    $field2 = isset($_REQUEST['field2'])?$_REQUEST['field2']:'';
+    	    $field3 = isset($_REQUEST['field3'])?$_REQUEST['field3']:'';
+    	    $response = 'Field 1 = "'.htmlentities(stripslashes($field1)).'"<br/>'.
+    	                'Field 2 = "'.htmlentities(stripslashes($field2)).'"<br/>'.
+    	                'Field 3 = "'.htmlentities(stripslashes($field3)).'"<br/>';
+    	    
+            jQuery('#testform')->html($response);
+    	    break;
     	case 'timeout':
     	    sleep(3);
     	    jQuery('#preview_content')-> animate (array('opacity'=>'0.5'), 1000)-> animate (array('opacity'=>'1'), 1000);
