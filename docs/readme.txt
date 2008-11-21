@@ -17,11 +17,16 @@
     homepage: http://anton.shevchuk.name
     
 == History
-    0.7 - 2008.09.11
+    0.6 - 2008.11.21
+        + debug area
+        + pack version
+        - remove popup debug window
+        
+    0.5.2 - 2008.09.11
         + example "send form"
         + plugin jQuery-Form
 
-    0.6 - 2008.07.28
+    0.5.1 - 2008.07.28
         + example "ajax loading image" with small image "ajax-loader.gif"
         + example "error handler"
         - remove method "jQuery" (cause an E_STRICT error)
