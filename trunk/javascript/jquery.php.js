@@ -1,6 +1,6 @@
 /*
  * jQuery PHP Plugin
- * version: 0.5 (07/07/2008)
+ * version: 0.6 (21/11/2008)
  * author:  Anton Shevchuk (http://anton.shevchuk.name)
  * @requires jQuery v1.2.1 or later
  *
@@ -148,9 +148,30 @@ php = {
      */
      error:function (xmlEr, typeEr, except) {
         var exObj = except ? except : false;
+        
+        jQuery('#php-error').remove();
+        
+        var printCss  = 
+            "<style type='text/css'>" +
+                "#php-error{ width:640px; position:absolute; top:4px; right:4px; border:1px solid #f00; }"+
+                "#php-error .php-title{ width:636px; height:26px; position:relative; line-height:26px; background-color:#f66; color:#fff; font-weight:bold; font-size:12px;padding-left:4px; }"+
+                "#php-error .php-more { width:20px;  height:20px; position:absolute; top:2px; right:24px; line-height:20px; text-align:center; cursor:pointer; border:1px solid #f00; background-color:#fee; color:#333; }"+
+                "#php-error .php-close{ width:20px;  height:20px; position:absolute; top:2px; right:2px;  line-height:20px; text-align:center; cursor:pointer; border:1px solid #f00; background-color:#fee; color:#333; }"+
+                "#php-error .php-desc { width:636px; position:relative; background-color:#fee; border-bottom:1px solid #f00;padding-left:4px;}"+
+                "#php-error .php-content{ display:none;}"+
+                "#php-error textarea{ width:634px;height:400px;overflow:auto;padding:2px;}"+
+            "</style>";
+        
         // error report for popup window coocking
-        var printStr = "<html><head><title>Error</title></head><body>";
-            printStr += 'XMLHttpRequest exchange : ';
+        var printStr  = 
+            "<div id='php-error'>"+
+                "<div class='php-title'>Error in AJAX request"+
+                    "<div class='php-more'>&raquo;</div>"+
+                    "<div class='php-close'>X</div>"+
+                "</div>"+
+                "<div class='php-desc'>";
+                
+            printStr += "<b>XMLHttpRequest exchange</b>: ";
         
         // XMLHttpRequest.readyState status
         switch (xmlEr.readyState) {
@@ -173,23 +194,53 @@ php = {
                 return "uncknown state";  
         }
         
-        printStr += readyStDesc+" ("+xmlEr.readyState+")<br />";
+        printStr += readyStDesc+" ("+xmlEr.readyState+")";
+        printStr += "<br/>\n";
         
         if (exObj!=false) {
-            printStr += "exception was catch: "+except.toString()+"<br />";
+            printStr += "exception was catch: "+except.toString();
+            printStr += "<br/>\n";
         }
         
         // add http status description
-        printStr += "<br />HTTP status: <br />"+xmlEr.status +" - "+xmlEr.statusText+"<br /><br />";
+        printStr += "<b>HTTP status</b>: "+xmlEr.status +" - "+xmlEr.statusText;
+        printStr += "<br/>\n";
         // add response text
-        printStr += "Response text : <br /> "+ xmlEr.responseText ;
-        printStr += "</body></html>" ;
+        printStr += "<b>Response text</b> (<small><a href='#' class='php-more2'>show more information &raquo;</a></small>):"; 
+        printStr += "</div>\n"; 
+        printStr += "<div class='php-content'><textarea>"+ xmlEr.responseText+"</textarea></div>";
+        printStr += "</div>" ;
         
-        var mywin = window.open( "",
-                                 "","status=0,width=800,height=600, resizable = yes ,scrollbars = yes ",true);
-                                 mywin.document.clear();
-                                 mywin.document.write(printStr);
-                                 mywin.document.close();
+        jQuery(document.body).append(printCss);
+        jQuery(document.body).append(printStr);
+        
+        
+        jQuery('#php-error .php-more').hover(
+            function(){
+                jQuery(this).css('background-color','#fff')
+            },
+            function(){
+                jQuery(this).css('background-color','#fee')
+            });
+        jQuery('#php-error .php-more').click(function(){
+            jQuery('#php-error .php-content').slideToggle();
+        });
+        jQuery('#php-error .php-more2').click(function(){
+            jQuery('#php-error .php-content').slideToggle();
+            return false;
+        });
+        
+        jQuery('#php-error .php-close').click(function(){
+            jQuery('#php-error').fadeOut('fast',function(){jQuery('#php-error').remove()})
+        });
+        
+        jQuery('#php-error .php-close').hover(
+            function(){
+                jQuery(this).css('background-color','#fff')
+            },
+            function(){
+                jQuery(this).css('background-color','#fee')
+            });
     },
     
     /**
@@ -236,21 +287,21 @@ php = {
     evalScript:function(data) {
         // why foo?
         var func = data.foo || '';
-        eval (func);
+        eval(func);
     },
     
     /* Default realization of callback functions */
     messages : {
         defaultCallBack : function (msg, params){
-            alert ("Server response message: " + msg);
+            alert("Server response message: " + msg);
         }
     },
     errors : {
         defaultCallBack : function (msg, params){
-            alert ("Server response error: " + msg);
+            alert("Server response error: " + msg);
         }
     }
-}
+};
 // end of php actions
 
 // example php extension to jQuery (example)
