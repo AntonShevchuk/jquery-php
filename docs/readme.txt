@@ -18,6 +18,7 @@
     
 == History
     0.6 - 2008.11.21
+        + Zend Action Helper (and change help)
         + debug area
         + pack version
         - remove popup debug window
