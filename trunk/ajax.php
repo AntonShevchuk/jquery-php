@@ -2,7 +2,7 @@
     // check all errors include E_STRICT
     // error_reporting(E_ALL&E_STRICT);
     
-    require_once 'libraries/jQuery.php';
+    require_once 'library/jQuery.php';
     
     $act = isset($_POST['act'])?$_POST['act']:null;
     
