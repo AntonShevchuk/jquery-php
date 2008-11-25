@@ -360,6 +360,48 @@ formAjax = function () {
 			             <pre class="php"><ol><li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;"><div style="font-family: 'Courier New', Courier, monospace; font-weight: normal;">jQuery::<span style="color: #006600;">evalScript</span><span style="color: #66cc66;">&#40;</span><span style="color: #ff0000;">'alert(&quot;Eval script...&quot;);'</span><span style="color: #66cc66;">&#41;</span>;</div></li></ol></pre>			        </div>
 
 			    </div>
+			    <br/>			    
+			    <a name="examples-callback"></a>
+			    <h3>Change Callback functions</h3>
+			    <br/>
+			    <div>
+    
+			        <h4>Show "Loading..." status</h4>
+			        
+			        Element with id = "loading" - is our "Loading..." image:
+			        <div class="source php">
+			            <pre class="php php" style="font-family:monospace;"><span style="color: #339933;">&lt;</span>script type<span style="color: #339933;">=</span><span style="color: #0000ff;">&quot;text/javascript&quot;</span><span style="color: #339933;">&gt;</span>
+$<span style="color: #009900;">&#40;</span>document<span style="color: #009900;">&#41;</span><span style="color: #339933;">.</span>ready<span style="color: #009900;">&#40;</span><span style="color: #000000; font-weight: bold;">function</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span>
+    php<span style="color: #339933;">.</span>beforeSend <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">function</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+        $<span style="color: #009900;">&#40;</span><span style="">'#loading'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">.</span>show<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span>;
+    <span style="color: #009900;">&#125;</span>;
+    php<span style="color: #339933;">.</span>complete   <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">function</span><span style="color: #009900;">&#40;</span>XMLHttpRequest<span style="color: #339933;">,</span> textStatus<span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+        $<span style="color: #009900;">&#40;</span><span style="">'#loading'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">.</span>hide<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span>;
+    <span style="color: #009900;">&#125;</span>;
+<span style="color: #009900;">&#125;</span><span style="color: #009900;">&#41;</span>;
+<span style="color: #000000; font-weight: bold;">&lt;/script&gt;</span></pre>
+			        </div>
+			        
+			        <h4>Change error callback</h4>
+			       
+			        Change to alert (O_o):
+			        <div class="source php">
+			             <pre class="php php" style="font-family:monospace;"><span style="color: #339933;">&lt;</span>script type<span style="color: #339933;">=</span><span style="color: #0000ff;">&quot;text/javascript&quot;</span><span style="color: #339933;">&gt;</span>
+php<span style="color: #339933;">.</span>error <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">function</span><span style="color: #009900;">&#40;</span>xmlEr<span style="color: #339933;">,</span> typeEr<span style="color: #339933;">,</span> except<span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+    alert<span style="color: #009900;">&#40;</span>xmlEr<span style="color: #009900;">&#41;</span>;
+<span style="color: #009900;">&#125;</span>
+<span style="color: #000000; font-weight: bold;">&lt;/script&gt;</span></pre>
+			        </div>
+			        <br/>
+			        
+			        Mute mode:
+			        <div class="source php">
+			             <pre class="php php" style="font-family:monospace;"><span style="color: #339933;">&lt;</span>script type<span style="color: #339933;">=</span><span style="color: #0000ff;">&quot;text/javascript&quot;</span><span style="color: #339933;">&gt;</span>
+php<span style="color: #339933;">.</span>error <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">function</span><span style="color: #009900;">&#40;</span>xmlEr<span style="color: #339933;">,</span> typeEr<span style="color: #339933;">,</span> except<span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span><span style="color: #009900;">&#125;</span>
+<span style="color: #000000; font-weight: bold;">&lt;/script&gt;</span></pre>
+			        </div>
+
+			    </div>
 			</div>
 		</div>
 	</div>
@@ -390,6 +432,7 @@ formAjax = function () {
 
                     <li><a href="#examples-events">Events</a></li>
                     <li><a href="#examples-actions">Actions</a></li>
+                    <li><a href="#examples-callback">Callback</a></li>
                 </ul>
             </li>
         </ol>
