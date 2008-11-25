@@ -42,13 +42,18 @@ class ZendY_JQuery_View_Helper_Ajax extends Zend_View_Helper_Abstract
      * @param  array $urlData    Data.
      * @return string JavaScript for the link onclick attribute.
      */
-    public function ajax(array $urlOptions = array(), array $urlData = array(), $onclick = false)
+    public function ajax(array $urlOptions = array(), array $urlData = array(), $onclick = false, $alternative = false)
     {
         $url  = $this->view->url($urlOptions);
         $data =  Zend_Json::encode($urlData);
         
         if ($onclick) {
-            return 'onclick=\'javascript:$.php("'.$url.'",'.$data.');return false;\'';
+            if ($alternative) {
+                return 'href="'.$url.'" onclick=\'javascript:$.php("'.$url.'",'.$data.');return false;\'';
+            } else {
+                return 'onclick=\'javascript:$.php("'.$url.'",'.$data.');return false;\'';
+            }
+            
         } else {
             return '$.php("'.$url.'",'.$data.')';
         }
