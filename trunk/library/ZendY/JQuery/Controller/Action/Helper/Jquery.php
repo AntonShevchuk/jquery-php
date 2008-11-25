@@ -48,14 +48,73 @@ class ZendY_JQuery_Controller_Action_Helper_Jquery extends Zend_Controller_Actio
         require_once 'jQuery.php';
         
         jQuery::init();
+    }
+    
+    /**
+     * error
+     *
+     * forward to error page
+     *
+     * @access  public
+     * @param   string   $action
+     * @param   string   $controller
+     * @param   string   $module
+     * @param   array    $params
+     * @return  rettype  return
+     */
+    public function error($action, $controller = null, $module = null, array $params = null) 
+    {
+        $request = $this->getRequest();
         
-        $contextSwitch = Zend_Controller_Action_HelperBroker::getStaticHelper('contextSwitch');
-        $contextSwitch->initContext('json');
+        // check is AJAX request or not
+        if (!$request->isXmlHttpRequest()) {
+            
+            if (null !== $params) {
+                $request->setParams($params);
+            }
+    
+            if (null !== $controller) {
+                $request->setControllerName($controller);
+    
+                // Module should only be reset if controller has been specified
+                if (null !== $module) {
+                    $request->setModuleName($module);
+                }
+            }
+            
+            $request->setActionName($action)
+                    ->setDispatched(false);
+                    
+            return true;
+        }
+        return false;
+    }
+    
+    /**
+     * sendResponse
+     *
+     * send response to browser
+     *
+     * @access  public
+     * @return  rettype  return
+     */
+    public function sendResponse() 
+    {
+        // Keep Layouts
+        require_once 'Zend/Controller/Action/HelperBroker.php';
+        Zend_Controller_Action_HelperBroker::getStaticHelper('viewRenderer')->setNoRender(true);
+
+        require_once 'Zend/Layout.php';
+        $layout = Zend_Layout::getMvcInstance();
+        if ($layout instanceof Zend_Layout) {
+            $layout->disableLayout();
+        }
         
-        $viewRenderer = Zend_Controller_Action_HelperBroker::getStaticHelper('viewRenderer');
-        $viewRenderer->view->a = jQuery::$response['a'];
-        $viewRenderer->view->q = jQuery::$response['q'];
+        // set JSON header
+        $response = Zend_Controller_Front::getInstance()->getResponse();
+        $response->setHeader('Content-Type', 'application/json');
         
-        $this->disableLayouts();
+        // send JSON data and exit
+        jQuery::getResponse();
     }
 }
