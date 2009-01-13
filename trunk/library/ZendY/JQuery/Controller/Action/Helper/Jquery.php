@@ -46,8 +46,6 @@ class ZendY_JQuery_Controller_Action_Helper_Jquery extends Zend_Controller_Actio
     {
         // require jQuery library
         require_once 'jQuery.php';
-        
-        jQuery::init();
     }
     
     /**
