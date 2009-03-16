@@ -1,6 +1,6 @@
 /*
  * jQuery PHP Plugin
- * version: 0.6 (21/11/2008)
+ * version: 0.8.3 (21/11/2008)
  * author:  Anton Shevchuk (http://anton.shevchuk.name)
  * @requires jQuery v1.2.1 or later
  *

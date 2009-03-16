@@ -63,6 +63,10 @@
     	    jQuery::addError('Error 1...');
     	    jQuery::addError('Error 2...');
     	    break;
+    	case 'data':
+    	    jQuery::addData('key1', 'value1');
+            jQuery::addData('key2', 'value2', 'myCallBack');
+    	    break;
     	case 'eval':
     	    jQuery::evalScript('alert("Eval script...");');
     	    break;

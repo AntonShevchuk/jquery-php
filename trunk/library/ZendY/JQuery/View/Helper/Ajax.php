@@ -31,7 +31,7 @@ require_once 'Zend/View/Helper/Abstract.php';
  * @copyright  Copyright (c) 2008 Anton Shevchuk (http://anton.shevchuk.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class ZendY_View_Helper_Ajax extends Zend_View_Helper_Abstract
+class ZendY_JQuery_View_Helper_Ajax extends Zend_View_Helper_Abstract
 {
     /**
      * Generates a javascript

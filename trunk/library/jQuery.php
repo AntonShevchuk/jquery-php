@@ -1,13 +1,17 @@
 <?php
+/** jQuery_Action */
+require_once 'jQuery/Action.php';
+/** jQuery_Element */
+require_once 'jQuery/Element.php';
+
 /**
  * jQuery
  *
- * @author dark
- * @date 27.12.2007
+ * @author Anton Shevchuk
+ * @access   public
+ * @package  jQuery
+ * @version  0.8
  */
-require_once 'jQuery/Action.php';
-require_once 'jQuery/Element.php';
-
 class jQuery
 {
     /**
@@ -42,14 +46,43 @@ class jQuery
      *
      * @return void
      */
-    private static function init()
+    public static function init()
     {
         if (empty(jQuery::$jQuery)) {
             jQuery::$jQuery = new jQuery();
         }
         return true;
     }
-    
+
+
+    /**
+     * addData
+     *
+     * add any data to response
+     *
+     * @param string $key
+     * @param mixed $value
+     * @param string $callBack
+     * @return jQuery
+     */
+    public static function addData ($key, $value, $callBack = null)
+    {
+        jQuery::init();
+
+        $jQuery_Action = new jQuery_Action();
+        $jQuery_Action ->add('k', $key);
+        $jQuery_Action ->add('v', $value);
+        
+        // add call back func into response JSON obj
+        if ($callBack) {
+            $jQuery_Action ->add("callback", $callBack);
+        }
+
+        jQuery::addAction(__FUNCTION__, $jQuery_Action);
+
+        return jQuery::$jQuery;
+    }
+
     /**
      * addMessage
      * 

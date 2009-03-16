@@ -17,7 +17,12 @@
     homepage: http://anton.shevchuk.name
     
 == History
-    0.6 - 2008.11.21
+    0.8.3 - 2009.03.16
+        * fix Zend classes
+        * fix jQuery usage
+        + add suport method addData 
+
+    0.8 - 2008.11.21
         + Zend Action Helper (and change help)
         + debug area
         + pack version
