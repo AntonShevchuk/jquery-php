@@ -32,7 +32,7 @@ require_once 'Zend/Controller/Action/Helper/Abstract.php';
  * @subpackage ZendY_JQuery_Controller_Action
  */
 
-class ZendY_JQuery_Controller_Action_Helper_Jquery extends Zend_Controller_Action_Helper_Abstract
+class ZendY_Controller_Action_Helper_Jquery extends Zend_Controller_Action_Helper_Abstract
 {
     /**
      * init
