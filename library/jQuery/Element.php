@@ -2,6 +2,9 @@
 /**
  * jQuery_Element - class for work with jQuery framework
  *
+ * @author Anton Shevchuk
+ * @access   public
+ * @package  jQuery
  */
 class jQuery_Element
 {

@@ -4,9 +4,9 @@
  *
  * Abstract class for any parameter of any action
  *
+ * @author Anton Shevchuk
  * @access   public
  * @package  jQuery
- * @created  Thu Sep 13 18:07:27 EEST 2007
  */
 class jQuery_Action
 {

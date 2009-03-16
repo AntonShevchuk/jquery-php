@@ -1,6 +1,6 @@
 /*
  * jQuery PHP Plugin
- * version: 0.6 (21/11/2008)
+ * version: 0.8.3 (16/03/2009)
  * author:  Anton Shevchuk (http://anton.shevchuk.name)
  * @requires jQuery v1.2.1 or later
  *
@@ -11,6 +11,42 @@
  *
  * Revision: $Id$
  */
+(function($) {
+
+$.extend({
+    php: function (url, params) {
+        // do an ajax post request
+        $.ajax({
+           // AJAX-specified URL
+           url: url,
+           // JSON
+           type: "POST",
+           data: params,
+           dataType : "json",
+
+           /* Handlers */
+
+           // Handle the beforeSend event
+           beforeSend: function(){
+               return php.beforeSend();
+           },
+           // Handle the success event
+           success: function(data, textStatus){
+               return php.success(data, textStatus);
+           },
+           // Handle the error event
+           error: function (xmlEr, typeEr, except) {
+               return php.error(xmlEr, typeEr, except);
+           },
+           // Handle the complete event
+           complete: function (XMLHttpRequest, textStatus) {
+               return php.complete(XMLHttpRequest, textStatus);
+           }
+        });
+    }
+});
+
+
 php = {
     /**
      * beforeSend
@@ -25,10 +61,10 @@ php = {
      * @param string textStatus
      */
      success:function (response, textStatus) {
-        // call jquery methods
+        // call jQuery methods
 		for (var i=0;i<response['q'].length; i++) {
 		   
-			var selector  = jQuery(response['q'][i]['s']);
+			var selector  = $(response['q'][i]['s']);
 			var methods   = response['q'][i]['m'];
 			var arguments = response['q'][i]['a'];
 			
@@ -114,7 +150,7 @@ php = {
 					}
 				} catch (error) {
 					// if is error
-					alert('onAction: jQuery("'+ response['q'][i]['s'] +'").'+ method +'("'+ argument +'")\n'
+					alert('onAction: $("'+ response['q'][i]['s'] +'").'+ method +'("'+ argument +'")\n'
 									+' in file: ' + error.fileName + '\n'
 									+' on line: ' + error.lineNumber +'\n'
 									+' error:   ' + error.message);
@@ -124,7 +160,7 @@ php = {
 
         // predefined actions named as 
         // Methods of ObjResponse in PHP side 
-        jQuery.each(response['a'], function (func, params) {
+        $.each(response['a'], function (func, params) {
             for (var i=0;i<params.length; i++) {
                 try {
                     php[func](params[i]);
@@ -139,6 +175,7 @@ php = {
         });
              
     },
+
     /**
      * error
      * 
@@ -149,7 +186,7 @@ php = {
      error:function (xmlEr, typeEr, except) {
         var exObj = except ? except : false;
         
-        jQuery('#php-error').remove();
+        $('#php-error').remove();
         
         var printCss  = 
             "<style type='text/css'>" +
@@ -157,7 +194,7 @@ php = {
                 "#php-error .php-title{ width:636px; height:26px; position:relative; line-height:26px; background-color:#f66; color:#fff; font-weight:bold; font-size:12px;padding-left:4px; }"+
                 "#php-error .php-more { width:20px;  height:20px; position:absolute; top:2px; right:24px; line-height:20px; text-align:center; cursor:pointer; border:1px solid #f00; background-color:#fee; color:#333; }"+
                 "#php-error .php-close{ width:20px;  height:20px; position:absolute; top:2px; right:2px;  line-height:20px; text-align:center; cursor:pointer; border:1px solid #f00; background-color:#fee; color:#333; }"+
-                "#php-error .php-desc { width:636px; position:relative; background-color:#fee; border-bottom:1px solid #f00;padding-left:4px;}"+
+                "#php-error .php-desc { width:636px; position:relative; background-color:#fee;padding-left:4px;}"+
                 "#php-error .php-content{ display:none;}"+
                 "#php-error textarea{ width:634px;height:400px;overflow:auto;padding:2px;}"+
             "</style>";
@@ -211,35 +248,35 @@ php = {
         printStr += "<div class='php-content'><textarea>"+ xmlEr.responseText+"</textarea></div>";
         printStr += "</div>" ;
         
-        jQuery(document.body).append(printCss);
-        jQuery(document.body).append(printStr);
+        $(document.body).append(printCss);
+        $(document.body).append(printStr);
         
         
-        jQuery('#php-error .php-more').hover(
+        $('#php-error .php-more').hover(
             function(){
-                jQuery(this).css('background-color','#fff')
+                $(this).css('background-color','#fff')
             },
             function(){
-                jQuery(this).css('background-color','#fee')
+                $(this).css('background-color','#fee')
             });
-        jQuery('#php-error .php-more').click(function(){
-            jQuery('#php-error .php-content').slideToggle();
+        $('#php-error .php-more').click(function(){
+            $('#php-error .php-content').slideToggle();
         });
-        jQuery('#php-error .php-more2').click(function(){
-            jQuery('#php-error .php-content').slideToggle();
+        $('#php-error .php-more2').click(function(){
+            $('#php-error .php-content').slideToggle();
             return false;
         });
         
-        jQuery('#php-error .php-close').click(function(){
-            jQuery('#php-error').fadeOut('fast',function(){jQuery('#php-error').remove()})
+        $('#php-error .php-close').click(function(){
+            $('#php-error').fadeOut('fast',function(){$('#php-error').remove()})
         });
         
-        jQuery('#php-error .php-close').hover(
+        $('#php-error .php-close').hover(
             function(){
-                jQuery(this).css('background-color','#fff')
+                $(this).css('background-color','#fff')
             },
             function(){
-                jQuery(this).css('background-color','#fee')
+                $(this).css('background-color','#fee')
             });
     },
     
@@ -280,6 +317,18 @@ php = {
         var callBackParams = data.params   || {};
         php.errors[callBackFunc](message, callBackParams);
     },
+
+    /**
+     * addData
+     *
+     * @param object data
+     */
+    addData:function(data) {
+        // call registered or default func
+        var callBackFunc   = data.callback || "defaultCallBack";
+        php.data[callBackFunc](data.k, data.v);
+    },
+
     /**
      * evalScript
      * @param object data
@@ -291,6 +340,11 @@ php = {
     },
     
     /* Default realization of callback functions */
+    data : {
+        defaultCallBack : function (key, value){
+            alert("Server response: " + key + " = " + value);
+        }
+    },
     messages : {
         defaultCallBack : function (msg, params){
             alert("Server response message: " + msg);
@@ -303,37 +357,4 @@ php = {
     }
 };
 // end of php actions
-
-// example php extension to jQuery (example)
-jQuery.extend({
-    php: function (url, params) {
-        // do an ajax post request
-        jQuery.ajax({
-           // AJAX-specified URL
-           url: url,
-           // JSON
-           type: "POST",
-           data: params,
-           dataType : "json",
-           
-           /* Handlers */
-           
-           // Handle the beforeSend event
-           beforeSend: function(){
-               return php.beforeSend();
-           },
-           // Handle the success event
-           success: function(data, textStatus){
-               return php.success(data, textStatus);
-           },
-           // Handle the error event
-           error: function (xmlEr, typeEr, except) {
-               return php.error(xmlEr, typeEr, except);                  
-           },
-           // Handle the complete event
-           complete: function (XMLHttpRequest, textStatus) {              
-               return php.complete(XMLHttpRequest, textStatus);
-           }
-        })
-    }
-});
+})(jQuery);
