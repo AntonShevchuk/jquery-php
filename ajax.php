@@ -41,6 +41,13 @@
     	case 'test5-restore':
             jQuery('#test5 div.hide')-> slideDown(500);
     		break;
+    	case 'json':
+    	    ob_start();
+    	    var_dump(json_decode(stripslashes($_REQUEST['data'])));
+    	    $data = ob_get_contents();
+    	    ob_end_clean();
+    	    jQuery('#testjson')->html('<pre>'.$data.'</pre>');
+    	    break;
     	case 'form':
     	    $field1 = isset($_REQUEST['field1'])?$_REQUEST['field1']:'';
     	    $field2 = isset($_REQUEST['field2'])?$_REQUEST['field2']:'';
