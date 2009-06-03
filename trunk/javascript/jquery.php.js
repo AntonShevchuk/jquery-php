@@ -23,7 +23,6 @@ $.extend({
            type: "POST",
            data: params,
            dataType : "json",
-
            /* Handlers */
 
            // Handle the beforeSend event
