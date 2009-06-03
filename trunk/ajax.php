@@ -66,6 +66,10 @@
     	    jQuery::addMessage('Message 1...');
     	    jQuery::addMessage('Message 2...');
     	    break;
+    	case 'msg2':
+    	    jQuery::addMessage('Message 1...', 'myCallBack');
+    	    jQuery::addMessage('Message 2...', 'myCallBack');
+    	    break;
     	case 'err':
     	    jQuery::addError('Error 1...');
     	    jQuery::addError('Error 2...');
