@@ -26,32 +26,32 @@
 <body>
 <script language="JavaScript" type="text/javascript">
 var url = "http://"+document.domain+"/ajax.php";
-
-// example registering simple callback function for messages
-php.messages.myCallBack = function (msg, params){
-    alert ("My messages CallBack func: " + msg);
-}
-
-// example registering simple callback function for errors
-php.errors.myCallBack = function (msg, params){
-    alert ("My errors CallBack func: " + msg);
-}
-
-// example registering simple callback function for data
-php.data.myCallBack = function (key, value){
-    alert ("My data CallBack func: " + key +" = " + value);
-}
-
-formAjax = function () {
-    $.php(url, $('form#form2').serialize());
-    return false;
-}
-
-
-getJson = function () {
-  var args = Array.prototype.slice.call(arguments);
-  $.php(url,{act:'json',data:JSON.stringify(args)});
-}
+$(document).ready(function(){
+    // example registering simple callback function for messages
+    php.messages.myCallBack = function (msg, params){
+        alert ("My messages CallBack func: " + msg);
+    }
+    
+    // example registering simple callback function for errors
+    php.errors.myCallBack = function (msg, params){
+        alert ("My errors CallBack func: " + msg);
+    }
+    
+    // example registering simple callback function for data
+    php.data.myCallBack = function (key, value){
+        alert ("My data CallBack func: " + key +" = " + value);
+    }
+    
+    formAjax = function () {
+        $.php(url, $('form#form2').serialize());
+        return false;
+    }
+    
+    getJson = function () {
+      var args = Array.prototype.slice.call(arguments);
+      $.php(url,{act:'json',data:JSON.stringify(args)});
+    }
+});
 </script>
 <!-- start header -->
 <div id="header">
@@ -79,13 +79,13 @@ getJson = function () {
                 <h3>Initialize</h3>
 
                 PHP: require jQuery library
-<pre class="brush: php;">
-require_once 'libraries/jQuery.php';
-// many actions
-// ...
-
-// get JSON response
-jQuery::getResponse();</pre>
+                <pre class="brush: php;">
+                require_once 'libraries/jQuery.php';
+                // many actions
+                // ...
+                
+                // get JSON response
+                jQuery::getResponse();</pre>
 		        HTML: initialize jQuery and jQuery.php
 		        
 			    <pre class="brush: xml;">
@@ -93,22 +93,22 @@ jQuery::getResponse();</pre>
 <script src="javascript/jquery.php.js" type="text/javascript"></script></pre>
 
 		        JavaScript: call AJAX (example)
-<pre class="brush: js;">
-// do an ajax post request (example)
-jQuery.extend({
-   php: function (url, params) {
-      // do an ajax post request
-      $.ajax({
-          // AJAX-specified URL
-          url: url,
-          // JSON
-          type: "POST",
-          data: params,
-          dataType : "json"
-      })
-   }
-});
-</pre>
+                <pre class="brush: js;">
+                // do an ajax post request (example)
+                jQuery.extend({
+                   php: function (url, params) {
+                      // do an ajax post request
+                      $.ajax({
+                          // AJAX-specified URL
+                          url: url,
+                          // JSON
+                          type: "POST",
+                          data: params,
+                          dataType : "json"
+                      })
+                   }
+                });
+                </pre>
 
 			</div>
 		</div>
@@ -454,7 +454,7 @@ php.messages.defaultCallBack = function (msg, params){
     alert ("My messages CallBack func: " + msg);
 }</pre>
 
-			        Or create own callback function:			        
+			        Or create own callback function (<a href="#" onclick="javascript:$.php(url,{'act':'msg2'});return false;">click to run</a>):	        
 <pre class="brush: js;">
 // example registering simple callback function for messages
 php.messages.myCallBack = function (msg, params){
