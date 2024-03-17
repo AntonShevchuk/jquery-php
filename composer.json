@@ -1,0 +1,25 @@
+{
+  "name": "anton-shevchuk/jquery-php",
+  "description": "jQuery-PHP is a PHP library that seamlessly integrates jQuery with PHP",
+  "type": "library",
+  "license": "MIT",
+  "minimum-stability": "dev",
+  "authors": [
+    {
+      "name": "Anton Shevchuk",
+      "email": "anton.shevchuk@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.4",
+    "ext-json": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "AntonShevchuk\\jQuery\\": "src/jQuery"
+    },
+    "files": [
+      "src/jQuery/functions.php"
+    ]
+  }
+}
