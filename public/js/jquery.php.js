@@ -23,17 +23,17 @@
      * @param textStatus
      */
     success: function (response, textStatus) {
-      // call query methods
-      for (var i = 0; i < response['elements'].length; i++) {
+      // call jQuery chain-methods
+      for (let i = 0; i < response['elements'].length; i++) {
 
-        var $element = $(response['elements'][i]['selector'])
-        var methods = response['elements'][i]['methods']
-        var arguments = response['elements'][i]['arguments']
+        let $element = $(response['elements'][i]['selector'])
+        let methods = response['elements'][i]['methods']
+        let arguments = response['elements'][i]['arguments']
 
-        for (var j = 0; j < methods.length; j++) {
+        for (let j = 0; j < methods.length; j++) {
           try {
-            var method = methods[j]
-            var argument = arguments[j]
+            let method = methods[j]
+            let argument = arguments[j]
 
             if (method && method !== '' && typeof method !== 'undefined') {
               switch (true) {
@@ -96,30 +96,28 @@
             }
           } catch (error) {
             // if is error
-            console.error(`onAction: $("${response['elements'][i]['selector']}").${method}("${argument}")
- in file: ${error.fileName}
- on line: ${error.lineNumber}
- error:   ${error.message}`)
+            console.error(`onAction: $("${response['elements'][i]['selector']}")`)
           }
         }
       }
+      // call jQuery/window methods
+      for (let i = 0; i < response['actions'].length; i++) {
+        let func = response['actions'][i]['function']
+        let args = response['actions'][i]['arguments']
 
-      // predefined actions named as
-      // Methods of ObjResponse in PHP side
-      $.each(response['actions'], function (func, params) {
-        for (let i = 0; i < params.length; i++) {
-          try {
-            $[func](params[i])
-          } catch (error) {
-            // if is error
-            console.error(`onAction: $.${func}(${params[i]})
- in file: ${error.fileName}
- on line: ${error.lineNumber}
- error:   ${error.message}`)
+        try {
+          if (typeof $[func] !== 'undefined') {
+            $[func](...args)
+          } else if (typeof window[func] !== 'undefined') {
+            window[func](...args)
+          } else {
+            throw new Error('Function not found')
           }
+        } catch (error) {
+          // if is error
+          console.error(`onAction: $.${func}()`)
         }
-      })
-
+      }
     },
 
     /**

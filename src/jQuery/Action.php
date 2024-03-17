@@ -10,14 +10,14 @@ namespace AntonShevchuk\jQuery;
 class Action
 {
     /**
-     * @var string
+     * @var string|null
      */
-    public string $function;
+    public ?string $function = null;
 
     /**
      * @var array
      */
-    public array $arguments = [];
+    public array $arguments;
 
     /**
      * __call
@@ -34,6 +34,6 @@ class Action
         }
 
         $this->function = $function;
-        $this->arguments[] = $args;
+        $this->arguments = $args;
     }
 }
