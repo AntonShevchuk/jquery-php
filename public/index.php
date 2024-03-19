@@ -49,7 +49,7 @@ if ($action === 'demo') {
             transmission, parsing, and other tedious tasks. With this bridge, you can bring the DOM directly onto your
             server and easily manipulate it in a jQuery-style manner.</p>
 
-        <button class="btn btn-outline-primary" onclick="$.php(location.pathname,{'action':'demo'});return false;">Run demo snippet</button>
+        <button class="btn btn-outline-primary" onclick="$.php(location.pathname,{'action':'demo'}).then(() => console.log('done'));return false;">Run demo snippet</button>
     </div>
 </main>
 <!-- /intro -->

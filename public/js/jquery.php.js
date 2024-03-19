@@ -1,15 +1,14 @@
-/*
- * query PHP Plugin
- * version: 0.8.3 (16/03/2009)
- * author:  Anton Shevchuk (https://anton.shevchuk.name)
- * @requires query v1.2.1 or later
+/**
+ * jQuery PHP Plugin
  *
  * Examples and documentation at: https://jquery.hohli.com/
  *
- * Revision: $Id$
+ * @version 1.0.1 (19/03/2024)
+ * @author Anton Shevchuk (https://anton.shevchuk.name)
+ * @link https://jquery.hohli.com/
  */
 (function ($) {
-  php = {
+  const php = {
     /**
      * beforeSend
      */
@@ -96,7 +95,7 @@
             }
           } catch (error) {
             // if is error
-            console.error(`onAction: $("${response['elements'][i]['selector']}")`)
+            console.error(`Action: $("${response['elements'][i]['selector']}")\nStatus: ${textStatus}`)
           }
         }
       }
@@ -115,7 +114,7 @@
           }
         } catch (error) {
           // if is error
-          console.error(`onAction: $.${func}()`)
+          console.error(`Action: $.${func}()\nStatus: ${textStatus}`)
         }
       }
     },
@@ -143,12 +142,12 @@
       return true
     },
   }
-// end of php actions
+  // end of php actions
 
   $.extend({
     php: function (url, params) {
       // do an ajax post request
-      $.ajax({
+      return $.ajax({
         // AJAX-specified URL
         url: url,
         // JSON
