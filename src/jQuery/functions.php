@@ -8,7 +8,7 @@ namespace AntonShevchuk\jQuery;
  * @param string|null $selector
  * @return Action|Element
  */
-function jQuery(string $selector = null)
+function jQuery(?string $selector = null): Element|Action
 {
     $container = Container::getInstance();
 

@@ -81,4 +81,4 @@ You can find more examples on the site: https://jquery.hohli.com
 The project is developed by [Anton Shevchuk][1], and distributed under [MIT LICENSE][2]
 
 [1]: https://anton.shevchuk.name/
-[2]: https://raw.githubusercontent.com/AntonShevchuk/ukrainian-typography-keyboard-layout/master/LICENSE
+[2]: https://raw.githubusercontent.com/AntonShevchuk/jquery-php/master/LICENSE

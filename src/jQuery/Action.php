@@ -2,6 +2,8 @@
 
 namespace AntonShevchuk\jQuery;
 
+use Exception;
+
 /**
  * Class Action
  *
@@ -25,12 +27,12 @@ class Action
      * @param $function
      * @param $args
      * @return void
-     * @throws \Exception
+     * @throws Exception
      */
     public function __call($function, $args)
     {
         if ($this->function) {
-            throw new \Exception("This action already initialized with call $this->function.");
+            throw new Exception("This action already initialized with call $this->function.");
         }
 
         $this->function = $function;

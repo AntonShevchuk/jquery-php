@@ -1,6 +1,6 @@
 <?php
 // check all errors include E_STRICT
-error_reporting(E_ALL | E_STRICT);
+error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 require __DIR__ . '/../vendor/autoload.php';
@@ -39,6 +39,22 @@ if ($action === 'demo') {
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     <!-- Load main jQuery-PHP scripts -->
     <script src="js/jquery.php.js"></script>
+    <style>
+        pre {
+            padding: 1em;
+            border-radius: 0.5em;
+            border: 1px solid #ccc;
+        }
+        pre code strong {
+            color: #830000;
+            font-weight: normal;
+        }
+        pre code i {
+            color: green;
+            font-weight: normal;
+            font-style: normal;
+        }
+    </style>
 </head>
 <body>
 <!-- intro -->
@@ -49,8 +65,19 @@ if ($action === 'demo') {
             transmission, parsing, and other tedious tasks. With this bridge, you can bring the DOM directly onto your
             server and easily manipulate it in a jQuery-style manner.</p>
 
+    <pre><code>
+    <strong>&lt;?php</strong>
+        jQuery(<i>"#demo"</i>)
+            ->html(<i>"Server time: "</i> . date(<i>"H:i:s"</i>))
+            ->css(<i>"backgroundColor"</i>, <i>"#ffffdd"</i>)
+            ->animate([<i>"opacity"</i> => <i>"show"</i>], <strong>3000</strong>)
+            ->animate([<i>"opacity"</i> => <i>"hide"</i>], <strong>3000</strong>)
+        ;
+    </code></pre>
+
         <button class="btn btn-outline-primary" onclick="$.php(location.pathname,{'action':'demo'}).then(() => console.log('done'));return false;">Run demo snippet</button>
     </div>
+
 </main>
 <!-- /intro -->
 <!-- example -->

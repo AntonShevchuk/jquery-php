@@ -50,11 +50,11 @@
                   break
                 // exception for 'filter'
                 case (method === 'filter' && argument.length === 1):
-                  // try run method
+                  // try to run method
                   if (window[argument[0]] && window[argument[0]] !== '' && typeof window[argument[0]] !== 'undefined') {
                     $element = $element[method](window[argument[0]])
                   } else {
-                    // try filter by specified expression
+                    // try to filter by a specified expression
                     $element = $element[method](argument[0])
                   }
                   break

@@ -1,7 +1,7 @@
 ## Changelog
 
 ### 1.0.0 - 2024.03.16
-* migrated to new version of PHP
+* migrated to the new version of PHP
 * migrated to composer
 * added functions `jQuery` and `jQueryContainer`
 * added built-in example
@@ -24,7 +24,7 @@
 * plugin jQuery-Form
 
 ### 0.5.1 - 2008.07.28
-* example "ajax loading image" with small image "ajax-loader.gif"
+* example "ajax loading image" with a small image "ajax-loader.gif"
 * example "error handler"
 * remove method `jQuery` (cause an E_STRICT error)
 * crucial, now `jQuery::jQuery('#..')` is not working, use short call `jQuery('#..')`

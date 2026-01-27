@@ -2,6 +2,9 @@
 
 namespace AntonShevchuk\jQuery;
 
+use Exception;
+use JsonSerializable;
+
 /**
  * query
  *
@@ -10,7 +13,7 @@ namespace AntonShevchuk\jQuery;
  * @package  query
  * @version  0.8
  */
-class Container implements \JsonSerializable
+class Container implements JsonSerializable
 {
     /**
      * The class instance
@@ -58,11 +61,11 @@ class Container implements \JsonSerializable
      * Prevent from being unserialized
      *
      * @return mixed
-     * @throws \Exception
+     * @throws Exception
      */
     public function __wakeup()
     {
-        throw new \Exception("Cannot unserialize a singleton.");
+        throw new Exception("Cannot unserialize a singleton.");
     }
 
     /**
@@ -72,7 +75,7 @@ class Container implements \JsonSerializable
      * @param Action $action
      * @return void
      */
-    public function addAction(Action $action)
+    public function addAction(Action $action): void
     {
         $this->actions[] = $action;
     }
@@ -84,7 +87,7 @@ class Container implements \JsonSerializable
      * @param Element $element
      * @return void
      */
-    public function addElement(Element $element)
+    public function addElement(Element $element): void
     {
         $this->elements[] = $element;
     }
